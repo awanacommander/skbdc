@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #9690a20f;
+  --foreground: #171717;
+  --pureRed: #ff0000;
+  --creamWhite: #161519;
+  --blackButton: #111013;
+}
+
+html.dark {
+  --background: #161519;
+  --foreground: #ededed;
+  --pureRed: #ff0000;
+  --creamWhite: #ffffffd9;
+  --blackButton: #9690a240;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Poppins', sans-serif;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animated Link */
+.animated-link:after {
+  display:block;
+  content: '';
+  border-bottom: solid 0.2em #ff0000;  
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+  transform-origin:100% 50%;
+}
+.animated-link:hover {
+  color: #ff0000;
+  transition: all ease 0.4s;
+}
+.animated-link:hover:after {
+  transform: scaleX(1);
+}
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes breath-keyframes {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9); /* Scale up slightly at the midpoint */
+  }
+}
+
+.breathe-animation {
+  animation: breath-keyframes 2s ease-in-out infinite;
+}
